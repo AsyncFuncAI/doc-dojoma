@@ -1,0 +1,28 @@
+---
+title: CORS Policy Guide
+description: Understanding CORS Blocking
+---
+
+If you try to send requests to the Dojoma API from the browser, your requests will fail with the HTTP 403 Forbidden status code with a message stating "blocked by CORS policy". The Dojoma API does not allow calls directly from browser-based applications.
+
+## Security Considerations
+
+Requests to third-party APIs from front-end applications would expose your credentials on the web, leaving your account vulnerable to fraud and abuse. You should never reveal your API authentication key in publicly accessible code.
+
+### What to Do If Your Key Is Compromised
+
+If you realize your API authentication key has been compromised:
+
+1. Log in to your Dojoma account immediately
+2. Go to "Account Details"
+3. Find the option to deactivate any of your active API keys
+4. Deactivate any compromised key to prevent unauthorized usage
+5. Generate new keys from the same page if needed
+
+## Best Practices
+
+To safely use the Dojoma API on your website or application, you can route your requests through your own backend servers. This approach:
+
+- Keeps your credentials hidden
+- Allows you to specify CORS policies
+- Enables setting rate limits as required by your use case

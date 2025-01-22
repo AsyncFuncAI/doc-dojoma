@@ -1,0 +1,66 @@
+---
+title: Process Text
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+### cURL - ProcessText
+
+```bash title="cURL Example Request"
+curl -X POST 'http://localhost:3000/v1/processText' \
+  -H 'Accept: */*' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: your-api-key' \
+  --data-raw '{"question":"Basic Addition: 1 + 1?"}'
+```
+
+```json title="Example Response"
+{
+  "thinking": "Hmm... this is a basic arithmetic question. Let me think about it. The question is asking for the sum of 1 and 1. In mathematics, addition is one of the fundamental operations. When you add 1 and 1 together, you are essentially combining two units. This is a foundational concept in early childhood education, often taught using concrete materials like counting blocks or beads in Montessori settings. The answer should be straightforward, but let me double-check to ensure accuracy.",
+  "answer": "The sum of 1 and 1 is **2**. \n\n**Explanation:**\n- Addition is the process of combining two or more numbers to find their total.\n- When you add 1 and 1, you are essentially counting two individual units.\n- This is a basic mathematical fact that is often introduced to young learners as a starting point for understanding arithmetic.\n\n**Confidence Level:** 100%",
+  "title": "Basic Addition: 1 + 1"
+}
+```
+
+### Node.js Example for `processText` API
+
+To interact with the `http://localhost:3000/v1/processText` API programmatically, you can use Node.js and the `axios` library.
+
+```js title="Node.js"
+import axios from "axios";
+
+// Define the API URL and request payload
+const apiUrl = "http://localhost:3000/v1/processText";
+const apiKey = "your-api-key"; // Replace with your actual API key
+const payload = {
+  question: "what's 2 + 2=?", // The question you want the API to process
+};
+
+// Configure the request headers
+const headers = {
+  Accept: "*/*", // Accept any response format
+  "Content-Type": "application/json", // Indicate the request body is JSON
+  "x-api-key": apiKey, // Include the API key for authentication
+};
+
+// Send the POST request
+axios
+  .post(apiUrl, payload, { headers })
+  .then((response) => {
+    console.log("Response:", response.data); // Log the API response
+  })
+  .catch((error) => {
+    console.error("Error:", error.message); // Log any error message
+    if (error.response) {
+      console.error("Response data:", error.response.data); // Log detailed error response
+    }
+  });
+```
+
+### Request Schema
+
+<AutoTypeTable type="{ question: string }" />
+
+### Response Schema
+
+<AutoTypeTable type="{ thinking: string, answer: stringify, title: string }" />

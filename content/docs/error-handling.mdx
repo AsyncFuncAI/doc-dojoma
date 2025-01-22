@@ -1,0 +1,29 @@
+---
+title: Error Handling
+description: Error Handling
+---
+
+## Error Handling
+
+Errors are indicated by standard HTTP status codes. There are some error types that require special handling.
+
+Errors are indicated by standard HTTP status codes. It is important to make sure that your application handles errors in an appropriate way. To that end, please consult the list of expected status code results that are provided with each endpoint's documentation in the API Reference.
+
+### Common Error Codes
+
+#### HTTP 429: Too Many Requests
+
+This is an error that you might receive when sending many API requests in a short period of time. Your application should be configured to resend the requests after some delay. Specifically, we recommend implementing retries with exponential backoff. This is implemented in all of the official, Dojoma-supported client libraries.
+
+#### HTTP 456: Quota Exceeded
+
+- **If you're a Free API user**: You'll receive this error when the monthly 500,000 character limit of your subscription has been reached. You can consider upgrading your subscription if you need more character volume.
+- **If you're a Pro API user**: You'll receive this error when your Cost Control limit has been reached, and you can increase or remove your Cost Control limit if you need to continue translating. You can also use the usage endpoint to find out your currently used and available quota.
+
+#### HTTP 500: Internal Server Error
+
+This is an error you'll receive if there are temporary errors in Dojoma Services. Your application should be configured to resend the requests after some delay. Specifically, we recommend implementing retries with exponential backoff. This is implemented in all of the official, Dojoma-supported client libraries.
+
+The service dynamically adjusts to the load on the system. Please wait to stop receiving errors to send more requests again. As the service adapts, you will be able to send increasingly more requests within a given amount of time without encountering errors.
+
+Additional information may be provided by a JSON response that contains more details about the error. In this case, this additional information will be contained in the `message` key.

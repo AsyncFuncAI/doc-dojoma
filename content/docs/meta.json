@@ -1,0 +1,26 @@
+{
+  "title": "Getting Started",
+  "description": "A Brief Introduction on how to get started!",
+  "icon": "Building2",
+  "root": true,
+  "pages": [
+    "---Get Started---",
+    "index",
+    "why-dojoma",
+    "access-and-authentication",
+    "your-first-api-request",
+    "test-your-api-request-on-postman",
+    "---API Reference---",
+    "process-text",
+    "process-image",
+    "process-pdf",
+    "process-url",
+    "process-remix",
+    "---Best Practices---",
+    "error-handling",
+    "cors-requests",
+    "---Resources---",
+    "changelog",
+    "release-notes"
+  ]
+}
